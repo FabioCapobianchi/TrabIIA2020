@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define DEFAULT_TRYES 10;
+
 typedef struct dados dad,*pdad;
 struct dados /*ppessoas*/
 {
@@ -51,13 +55,26 @@ void ledados(pdad p,int ctd){
    }
 
 }
-int main()
-{
+int main(int argc, char **argv){
     pdad pd = NULL;
-    int pop, sub, cont;
+    int pop, sub, cont, tryes;
     char nome_fich[10];
-    printf("Nome do Ficheiro: ");
-    gets(nome_fich);
+    if(argc == 3){
+      tryes = atoi(argv[2]);
+      strcpy(nome_fich, argv[1]);
+    }
+    else{
+      if (argc == 2){
+        tryes = DEFAULT_TRYES;
+        strcpy(nome_fich, argv[1]);
+      }
+      else{
+        tryes = DEFAULT_TRYES;
+        puts("Nome do ficheiro:");
+        gets(nome_fich);
+      }
+    }
+    printf("Ficheiro aberto: %s\n", nome_fich);
     pd =init_dados(nome_fich, &pop, &sub, &cont);
     ledados(pd,cont);
     return 0;
