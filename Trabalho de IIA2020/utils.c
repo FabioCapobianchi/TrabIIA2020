@@ -3,7 +3,6 @@
 #include <time.h>
 #include "utils.h"
 
-
 int qs = 1;
 // Leitura do ficheiro de input
 // Recebe: nome do ficheiro, numero de vertices (ptr), numero de iteracoes (ptr)
@@ -17,7 +16,7 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 	FILE *fi;
 	dad *p, *p1 = NULL;
 	int i=0,ct=0;
-    char st[1000];
+  char st[1000];
 
 	fi=fopen(nome, "r");
 	if(!fi)
@@ -158,15 +157,15 @@ float rand_01()
 int startMenu(){
 	int i = 0;
 
-	puts("\t\t\t\t\t\t\t\t\t--------------- Menu ----------------\n");
-	puts("\t\t\t\t\t\t\t\t\tEscolha uma opção");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa 'Trepa-colinas'............1");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa 'Algoritmo genético'.......2");
-	puts("\t\t\t\t\t\t\t\t\tTerminar............................3");
+	puts("--------------- Menu ----------------\n");
+	puts("Escolha uma opção");
+	puts("Pesquisa 'Trepa-colinas'............1");
+	puts("Pesquisa 'Algoritmo genético'.......2");
+	puts("Terminar............................3");
 
 	do{
 		i = 0;
-		puts("\n\t\t\t\t\t\t\t\t\tEscolha uma opção");
+		puts("Escolha uma opção");
 		scanf("%d", &i);
 
 		if(i < 1 || i > 3){

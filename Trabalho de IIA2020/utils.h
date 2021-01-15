@@ -1,5 +1,8 @@
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 typedef struct dados dad,*pdad;
 typedef struct solucao sol,*psol;
 struct dados

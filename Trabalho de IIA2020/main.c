@@ -3,8 +3,8 @@
 #include <string.h>
 #include <Windows.h>
 #include "utils.h"
-#define DEFAULT_TRYES 100;
 
+#define DEFAULT_TRYES 100;
 
 int main(int argc, char **argv){
 
@@ -28,7 +28,7 @@ int main(int argc, char **argv){
       }
       else{
         tryes = DEFAULT_TRYES;
-        printf("\n\t\t\t\t\t\t\t\t\tNome do ficheiro: ");
+        printf("\nNome do ficheiro: ");
         scanf("%s", nome_fich);
       }
     }
@@ -42,7 +42,7 @@ int main(int argc, char **argv){
         case 2:
         system("cls");
         if(escolha == 0){
-          printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("Ficheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop,sub);
@@ -51,24 +51,33 @@ int main(int argc, char **argv){
                 bestmbf = mbf;
               }
             }
+<<<<<<< Updated upstream
           printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestmbf);
           setQs();
+=======
+          printf("Melhor solucao encontrada: %d\n\n",bestmbf);
+>>>>>>> Stashed changes
           free(pd);
         }else{
-          puts("\t\t\t\t\t\t\t\t\tLista de ficheiros existentes:\n");
-          puts("\t\t\t\t\t\t\t\t\tn010.txt");
-          puts("\t\t\t\t\t\t\t\t\tn012.txt");
-          puts("\t\t\t\t\t\t\t\t\tn030.txt");
-          puts("\t\t\t\t\t\t\t\t\tn060.txt");
-          puts("\t\t\t\t\t\t\t\t\tn120.txt");
-          puts("\t\t\t\t\t\t\t\t\tn240.txt\n");
-          puts("\t\t\t\t\t\t\t\t\tInsira o nome do ficheiro:");
+          puts("Lista de ficheiros existentes:\n");
+          puts("\tn010.txt");
+          puts("\tn012.txt");
+          puts("\tn030.txt");
+          puts("\tn060.txt");
+          puts("\tn120.txt");
+          puts("\tn240.txt\n");
+          puts("\tInsira o nome do ficheiro:");
           scanf("%20s", nome_fich);
-          printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
-          puts("\t\t\t\t\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\t\t\t\t\tNúmero de iterações desejadas: \n");
+          printf("\tFicheiro seleccionado: %s\n", nome_fich);
+          puts("(100 iterações por defeito)\nNúmero de iterações desejadas: \n");
           scanf("%d", &tryes);
+<<<<<<< Updated upstream
           system("cls");
           printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+=======
+          system("clear");
+          printf("Ficheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+>>>>>>> Stashed changes
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop,sub);
@@ -77,7 +86,7 @@ int main(int argc, char **argv){
                 bestmbf = mbf;
               }
             }
-          printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestmbf);
+          printf("Melhor solucao encontrada: %d\n\n",bestmbf);
         }
           escolha = 1;
           break;
