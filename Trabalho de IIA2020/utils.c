@@ -8,6 +8,10 @@ int qs = 1;
 // Leitura do ficheiro de input
 // Recebe: nome do ficheiro, numero de vertices (ptr), numero de iteracoes (ptr)
 // Devolve a matriz de adjacencias
+void setQs(){
+qs = 1;
+}
+
 dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 {
 	FILE *fi;
@@ -85,7 +89,7 @@ void escreve_sol(int *sol, int vert)
 int formagrupos(pdad a,int pop, int grupo,int ct){
 
 int i,j=0,soma=0, somat=0;
-int cc=0, ctr=0, g=1;
+int cc=0, ctr = 0, g=1;
 
   for(i=0;i<grupo;i++){
      printf(" Div(G%d) = ",g++);
