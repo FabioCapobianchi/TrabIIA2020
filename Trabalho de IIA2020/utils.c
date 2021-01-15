@@ -18,7 +18,9 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 	fi=fopen(nome, "r");
 	if(!fi)
 	{
-		printf("Erro no acesso ao ficheiro dos dados\n");
+		puts("\n\n\t\t\t\t\t\t\t\t\t******************************************************\n");
+		printf("\t\t\t\t\t\t\t\t\t\t Erro no acesso ao ficheiro dos dados\n");
+		puts("\n\n\t\t\t\t\t\t\t\t\t******************************************************\n");
 		exit(1);
 	}
 	 p1 = malloc(sizeof(dad)*1);

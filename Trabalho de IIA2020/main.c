@@ -85,7 +85,7 @@ int main(int argc, char **argv){
           system("clear");
           puts("\n\n\t\t\t\t\t\t\t\t******************************************************\n");
           printf("\n\t\t\t\t\t\t\t\t\t\t  Programa terminado!\n\n");
-          puts("\t\t\t\t\t\t\t\t******************************************************");
+          puts("\n\t\t\t\t\t\t\t\t******************************************************");
           return 0;
           }
         }while (menu != 3);
