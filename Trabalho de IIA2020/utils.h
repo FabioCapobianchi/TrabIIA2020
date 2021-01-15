@@ -1,4 +1,5 @@
 
+
 typedef struct dados dad,*pdad;
 typedef struct solucao sol,*psol;
 struct dados
@@ -16,6 +17,7 @@ struct solucao
 void ledados(pdad p,int ctd);
 
 int startMenu();
+void setQs();
 dad* init_dados(char *nome, int *pop, int *grupo,int *ctd);
 void gera_sol_inicial(pdad solu, int v,int grp,int subg);
 void escreve_sol(int *sol, int vert);

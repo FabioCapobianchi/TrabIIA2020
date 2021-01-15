@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ncurses.h>
+#include <Windows.h>
 #include "utils.h"
 #define DEFAULT_TRYES 100;
 
@@ -12,10 +12,10 @@ int main(int argc, char **argv){
     //psol ps = NULL;
     pdad pd = NULL;
     int mbf=0,bestmbf=0;
-    int i, pop, sub, cont, menu, me, tryes=0, escolha=0;
+    int i, pop, sub, cont, menu, tryes=0, escolha=0;
     char nome_fich[15];
 
-    system("clear");
+    system("cls");
 
     if(argc == 3){
       tryes = atoi(argv[2]);
@@ -40,7 +40,7 @@ int main(int argc, char **argv){
           break;
 
         case 2:
-        system("clear");
+        system("cls");
         if(escolha == 0){
           printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -52,6 +52,7 @@ int main(int argc, char **argv){
               }
             }
           printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestmbf);
+          setQs();
           free(pd);
         }else{
           puts("\t\t\t\t\t\t\t\t\tLista de ficheiros existentes:\n");
@@ -66,7 +67,7 @@ int main(int argc, char **argv){
           printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
           puts("\t\t\t\t\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\t\t\t\t\tNúmero de iterações desejadas: \n");
           scanf("%d", &tryes);
-          system("clear");
+          system("cls");
           printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
@@ -82,7 +83,7 @@ int main(int argc, char **argv){
           break;
 
         case 3:
-          system("clear");
+          system("cls");
           puts("\n\n\t\t\t\t\t\t\t\t******************************************************\n");
           printf("\n\t\t\t\t\t\t\t\t\t\t  Programa terminado!\n\n");
           puts("\n\t\t\t\t\t\t\t\t******************************************************");
