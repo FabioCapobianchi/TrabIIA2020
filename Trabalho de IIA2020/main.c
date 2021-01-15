@@ -30,7 +30,6 @@ int main(int argc, char **argv)
       }
     }
      pd =init_dados(nome_fich, &pop, &sub, &cont);
-
     for(i=0;i<tryes;i++){
 
     gera_sol_inicial(pd, cont,pop,sub);
