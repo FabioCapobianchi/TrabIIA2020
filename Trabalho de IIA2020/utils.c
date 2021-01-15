@@ -148,3 +148,25 @@ float rand_01()
 {
 	return ((float)rand())/RAND_MAX;
 }
+
+int startMenu(){
+	int i = 0;
+
+	puts("\t\t\t\t\t\t\t\t\t--------------- Menu ----------------\n");
+	puts("\t\t\t\t\t\t\t\t\tEscolha uma opção");
+	puts("\t\t\t\t\t\t\t\t\tPesquisa 'Trepa-colinas'............1");
+	puts("\t\t\t\t\t\t\t\t\tPesquisa 'Algoritmo genético'.......2");
+	puts("\t\t\t\t\t\t\t\t\tTerminar............................3");
+
+	do{
+		i = 0;
+		puts("\n\t\t\t\t\t\t\t\t\tEscolha uma opção");
+		scanf("%d", &i);
+
+		if(i < 1 || i > 3){
+			puts("\n\t\t\t\t\t\t\t\t\t\t!!!Opção inválida!!!");
+		}
+	}while(i < 1 || i > 3);
+
+	return i;
+}
