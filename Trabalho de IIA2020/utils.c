@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
 #include "utils.h"
 
 
-
+int qs = 1;
 // Leitura do ficheiro de input
 // Recebe: nome do ficheiro, numero de vertices (ptr), numero de iteracoes (ptr)
 // Devolve a matriz de adjacencias
-dad* init_dados(char *nome, int *pop, int *grupo,int *ctd)
+dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 {
 	FILE *fi;
 	dad *p, *p1 = NULL;
@@ -24,8 +23,8 @@ dad* init_dados(char *nome, int *pop, int *grupo,int *ctd)
 	}
 	 p1 = malloc(sizeof(dad)*1);
 
-    fscanf(fi, "%d %d %[^\n]",pop,grupo, st);
-	printf(" pop %d grupo %d \n",*pop,*grupo);
+    fscanf(fi, "%d %d %[^\n]",ele,grupo, st);
+	printf(" Elementos: %d grupos: %d \n\n",*ele,*grupo);
 
 	while(fscanf(fi,"%d %d %d",&p1[ct].x,&p1[ct].y,&p1[ct].dist)==3){
        ct++;
@@ -50,8 +49,7 @@ dad* init_dados(char *nome, int *pop, int *grupo,int *ctd)
 // Parametros: solucao, numero de vertices
 void gera_sol_inicial(pdad solu, int v,int grp,int subg)
 {
-	int i,j, x;
-	int soma = 0;
+	int i, x;
 
 	for(i=0; i<v; i++)
         solu[i].estado = 0;
@@ -63,7 +61,10 @@ void gera_sol_inicial(pdad solu, int v,int grp,int subg)
         solu[x].estado=1;
     }
 
+
 }
+
+
 // Escreve solucao
 // Parametros: solucao e numero de vertices
 void escreve_sol(int *sol, int vert)
@@ -80,45 +81,36 @@ void escreve_sol(int *sol, int vert)
 			printf("%2d  ", i);
 	printf("\n");
 }
-void formagrupos(pdad a,int pop, int grupo,int ct){
 
-int i,j=0,soma=0,somat=0;
-int cc=0,ctr = 0;
+int formagrupos(pdad a,int pop, int grupo,int ct){
+
+int i,j=0,soma=0, somat=0;
+int cc=0, ctr=0, g=1;
 
   for(i=0;i<grupo;i++){
-
+     printf(" Div(G%d) = ",g++);
      while(cc < pop/grupo){
         if(a[j].estado == 1){
             printf(" dist(%d,%d) ",a[j].x , a[j].y);
+            soma+= a[j].dist;
             if(cc+1==pop/grupo){
                 printf("= %d",soma);
+                somat += soma;
                 soma = 0;
             }else{
             printf("+");
             }
-            soma+= a[j].dist;
-            somat += soma;
             cc++;
         }
-
        j++;
      }printf("\n");
      ctr = j;
      cc=0;
 
   }
-  printf("MBF = %d",somat);
+  printf(" Qualidade(S%d)= %d\n\n",qs++,somat);
 
-
-}
-
-dad* criagrupo(pdad p, int *pop, int *grupo,int *ctd){
-int i;
-
-      for(i=0;i < *grupo;i++){
-
-      }
-return 0;
+return somat;
 }
 
 void ledados(pdad p,int ctd){
