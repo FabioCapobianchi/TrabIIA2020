@@ -12,7 +12,7 @@ int main(int argc, char **argv){
     init_rand();
     //psol ps = NULL;
     pdad pd = NULL;
-    int mbf=0,bestmbf=0,bestbest = 0;
+    int mbf=0,bestmbf=0,bestbest = 0;///////////////////
     int i, pop, sub, cont, menu, tryes=0, escolha=0;
     int flag=0;
     char nome_fich[15];
