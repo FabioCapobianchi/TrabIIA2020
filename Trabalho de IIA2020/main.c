@@ -138,26 +138,19 @@ int main(int argc, char **argv){
         if(escolha == 0){
           printf("Ficheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
-          for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop, sub);
             mbf = trepa(pd, pop, sub, res_trepa);
-            }
           printf("Melhor solucao encontrada: %d\n\n", mbf);
           free(pd);
         }else{
           imprime_fileList();
-          scanf("%20s", nome_fich);
-          printf("Ficheiro seleccionado: %s\n", nome_fich);
-          puts("(100 iterações por defeito)\nNúmero de iterações desejadas: \n");
-          scanf("%d", &tryes);
-          system("clear");
-          printf("Ficheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          scanf("%s", nome_fich);
+          printf("Ficheiro seleccionado: %s.\n\n", nome_fich);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
-          for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop, sub);
             mbf = trepa(pd, pop, cont, res_trepa);
-            }
           printf("Melhor solucao encontrada: %d\n\n",mbf);
+          free(pd);
         }
           escolha = 1;
           break;

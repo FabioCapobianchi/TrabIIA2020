@@ -111,20 +111,21 @@ int cc=0, ccr= 0, g=1;
 return somat;
 }
 
-int trepa(pdad a, int pop, int v_inicial, int res){
-	int current=0, next=0, i=0, j=0;
+int trepa(pdad a, int pop, int j, int res){
+	int current, next, i=0;
+
+			current = a[j].dist;
 
 			for(i=0; i<pop; i++){
-				printf("Iteração %d\n", j++);
-				current = v_inicial;
 				printf("Dist: %d\n", current);
 				next = a[i].dist;
-					if(current > next){
-						next = current;
-					}
+				printf("New dist: %d\n", next);
+					if(current < next){
+						return next;
+				}
 			}
-return next;
-}
+		return next;
+		}
 
 void ledados(pdad p,int ctd){
 
