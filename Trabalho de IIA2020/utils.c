@@ -88,10 +88,10 @@ void escreve_sol(int *sol, int vert)
 	printf("\n");
 }
 
-int formagrupos(pdad a,int pop, int grupo,int ct){
+int genetico(pdad a,int pop, int grupo,int ct){
 
 int i,j=0,soma=0, somat=0;
-int cc=0, ctr = 0, g=1;
+int cc=0, ccr= 0, g=1;
 
   for(i=0;i<grupo;i++){
      printf(" Div(G%d) = ",g++);
@@ -110,7 +110,7 @@ int cc=0, ctr = 0, g=1;
         }
        j++;
      }printf("\n");
-     ctr = j;
+     ccr = j;
      cc=0;
 
   }
@@ -159,18 +159,18 @@ int startMenu(){
 	int i = 0;
 
 	puts("\t\t\t\t\t\t\t\t\t--------------- Menu ----------------\n");
-	puts("\t\t\t\t\t\t\t\t\tEscolha uma opção");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa 'Trepa-colinas'............1");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa 'Algoritmo genético'.......2");
+	puts("\t\t\t\t\t\t\t\t\tEscolha uma opcao");
+	puts("\t\t\t\t\t\t\t\t\tPesquisa /'Trepa-colinas/'............1");
+	puts("\t\t\t\t\t\t\t\t\tPesquisa /'Algoritmo genético/'.......2");
 	puts("\t\t\t\t\t\t\t\t\tTerminar............................3");
 
 	do{
 		i = 0;
-		puts("\n\t\t\t\t\t\t\t\t\tEscolha uma opção");
+		puts("\n\t\t\t\t\t\t\t\t\tEscolha uma opcaoo");
 		scanf("%d", &i);
 
 		if(i < 1 || i > 3){
-			puts("\n\t\t\t\t\t\t\t\t\t\t!!!Opção inválida!!!");
+			puts("\n\t\t\t\t\t\t\t\t\t\t!!!Opcao invalida!!!");
 		}
 	}while(i < 1 || i > 3);
 
