@@ -3,16 +3,18 @@
 #include <string.h>
 #include <Windows.h>
 #include "utils.h"
-
+#include "trepac.h"
 #define DEFAULT_TRYES 100;
+
 
 int main(int argc, char **argv){
 
     init_rand();
     //psol ps = NULL;
     pdad pd = NULL;
-    int mbf=0,bestmbf=0;
+    int mbf=0,bestmbf=0,bestbest = 0;
     int i, pop, sub, cont, menu, tryes=0, escolha=0;
+    int flag=0;
     char nome_fich[15];
 
     system("cls");
@@ -28,7 +30,7 @@ int main(int argc, char **argv){
       }
       else{
         tryes = DEFAULT_TRYES;
-        printf("\nNome do ficheiro: ");
+        printf("\n\t\t\t\t\t\t\t\t\tNome do ficheiro: ");
         scanf("%s", nome_fich);
       }
     }
@@ -37,56 +39,110 @@ int main(int argc, char **argv){
       menu = startMenu();
       switch (menu) {
         case 1:
+
+system("cls");
+        if(escolha == 0){
+
+          printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          pd = init_dados(nome_fich, &pop, &sub, &cont);
+          for(i=0;i<tryes;i++){
+                  if(flag == 3){
+                      printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestbest);
+                 break;
+              }
+            gera_sol_inicial(pd, cont, pop,sub);
+            mbf = genetico(pd, pop, sub,cont);
+              if(mbf >= bestmbf){
+               bestbest = bestmbf = mbf;
+                flag = 0;
+              }else if(mbf < bestmbf && flag < 3)
+              bestmbf = mbf;
+              flag += 1;
+            }
+            flag = 0;
+
+          setQs();
+          free(pd);
+          mbf = 0;
+        }else{
+          puts("\t\t\t\t\t\t\t\t\tLista de ficheiros existentes:\n");
+          puts("\t\t\t\t\t\t\t\t\tn010.txt");
+          puts("\t\t\t\t\t\t\t\t\tn012.txt");
+          puts("\t\t\t\t\t\t\t\t\tn030.txt");
+          puts("\t\t\t\t\t\t\t\t\tn060.txt");
+          puts("\t\t\t\t\t\t\t\t\tn120.txt");
+          puts("\t\t\t\t\t\t\t\t\tn240.txt\n");
+          puts("\t\t\t\t\t\t\t\t\tInsira o nome do ficheiro:");
+          scanf("%20s", nome_fich);
+          printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
+          puts("\t\t\t\t\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\t\t\t\t\tNúmero de iterações desejadas: \n");
+          scanf("%d", &tryes);
+          system("cls");
+          printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+           pd = init_dados(nome_fich, &pop, &sub, &cont);
+          for(i=0;i<tryes;i++){
+                  if(flag == 3){
+                      printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestbest);
+                 break;
+              }
+            gera_sol_inicial(pd, cont, pop,sub);
+            mbf = genetico(pd, pop, sub,cont);
+              if(mbf >= bestmbf){
+          bestbest = bestmbf = mbf;
+                flag = 0;
+              }else if(mbf < bestmbf && flag < 3)
+              bestmbf = mbf;
+              flag += 1;
+            }
+            flag = 0;
+
+          setQs();
+          free(pd);
+          mbf = 0;
+        }
+          escolha = 1;
+
           break;
 
         case 2:
         system("cls");
         if(escolha == 0){
-          printf("Ficheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop,sub);
-            mbf = formagrupos(pd, pop, sub,cont);
+            mbf = genetico(pd, pop, sub,cont);
               if(mbf > bestmbf){
                 bestmbf = mbf;
               }
             }
-<<<<<<< Updated upstream
           printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestmbf);
           setQs();
-=======
-          printf("Melhor solucao encontrada: %d\n\n",bestmbf);
->>>>>>> Stashed changes
           free(pd);
         }else{
-          puts("Lista de ficheiros existentes:\n");
-          puts("\tn010.txt");
-          puts("\tn012.txt");
-          puts("\tn030.txt");
-          puts("\tn060.txt");
-          puts("\tn120.txt");
-          puts("\tn240.txt\n");
-          puts("\tInsira o nome do ficheiro:");
+          puts("\t\t\t\t\t\t\t\t\tLista de ficheiros existentes:\n");
+          puts("\t\t\t\t\t\t\t\t\tn010.txt");
+          puts("\t\t\t\t\t\t\t\t\tn012.txt");
+          puts("\t\t\t\t\t\t\t\t\tn030.txt");
+          puts("\t\t\t\t\t\t\t\t\tn060.txt");
+          puts("\t\t\t\t\t\t\t\t\tn120.txt");
+          puts("\t\t\t\t\t\t\t\t\tn240.txt\n");
+          puts("\t\t\t\t\t\t\t\t\tInsira o nome do ficheiro:");
           scanf("%20s", nome_fich);
-          printf("\tFicheiro seleccionado: %s\n", nome_fich);
-          puts("(100 iterações por defeito)\nNúmero de iterações desejadas: \n");
+          printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
+          puts("\t\t\t\t\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\t\t\t\t\tNúmero de iterações desejadas: \n");
           scanf("%d", &tryes);
-<<<<<<< Updated upstream
           system("cls");
           printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
-=======
-          system("clear");
-          printf("Ficheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
->>>>>>> Stashed changes
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop,sub);
-            mbf = formagrupos(pd, pop, sub,cont);
+            mbf = genetico(pd, pop, sub,cont);
               if(mbf > bestmbf){
                 bestmbf = mbf;
               }
             }
-          printf("Melhor solucao encontrada: %d\n\n",bestmbf);
+          printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestmbf);
         }
           escolha = 1;
           break;

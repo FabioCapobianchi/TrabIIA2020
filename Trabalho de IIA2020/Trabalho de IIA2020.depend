@@ -3,18 +3,33 @@
 	<stdio.h>
 	<stdlib.h>
 
-1610753295 source:c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\main.c
+1610824381 source:c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<Windows.h>
 	"utils.h"
+	"trepac.h"
 
-1610753295 c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\utils.h
+1610796002 c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\utils.h
 
-1610753295 source:c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\utils.c
+1610822036 source:c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\utils.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	"utils.h"
+
+1610796575 c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\include\trepac.h
+
+1610795542 source:c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\src\trepac.cpp
+	"trepac.h"
+
+1610796487 source:c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\trepa.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"utils.h"
+	"trepa.h"
+
+1610796477 c:\users\fabio\onedrive - isec\documents\github\trabiia2020\trabalho de iia2020\trepa.h
 
