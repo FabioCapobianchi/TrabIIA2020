@@ -79,6 +79,7 @@ system("cls");
           scanf("%d", &tryes);
           system("cls");
           printf("\t\t\t\t\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+
            pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
                   if(flag == 3){
@@ -94,8 +95,7 @@ system("cls");
               bestmbf = mbf;
               flag += 1;
             }
-            flag = 0;
-
+          flag = 0;
           setQs();
           free(pd);
           mbf = 0;
