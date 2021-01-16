@@ -29,7 +29,7 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 	}
 	 p1 = malloc(sizeof(dad)*1);
 
-    fscanf(fi, "%d %d %[^\n]",ele,grupo, st);
+  fscanf(fi, "%d %d %[^\n]",ele,grupo, st);
 	printf(" Elementos: %d grupos: %d \n\n",*ele,*grupo);
 
 	while(fscanf(fi,"%d %d %d",&p1[ct].x,&p1[ct].y,&p1[ct].dist)==3){
@@ -53,8 +53,7 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 
 // Gera a solucao inicial
 // Parametros: solucao, numero de vertices
-void gera_sol_inicial(pdad solu, int v,int grp,int subg)
-{
+void gera_sol_inicial(pdad solu, int v,int grp, int subg){
 	int i, x;
 
 	for(i=0; i<v; i++)
@@ -66,15 +65,11 @@ void gera_sol_inicial(pdad solu, int v,int grp,int subg)
         while(solu[x].estado != 0);
         solu[x].estado=1;
     }
-
-
 }
-
 
 // Escreve solucao
 // Parametros: solucao e numero de vertices
-void escreve_sol(int *sol, int vert)
-{
+void escreve_sol(int *sol, int vert){
 	int i;
 
 	printf("\nConjunto A: ");
@@ -88,7 +83,7 @@ void escreve_sol(int *sol, int vert)
 	printf("\n");
 }
 
-int genetico(pdad a,int pop, int grupo,int ct){
+int genetico(pdad a,int pop, int grupo, int ct){
 
 int i,j=0,soma=0, somat=0;
 int cc=0, ccr= 0, g=1;
@@ -117,6 +112,26 @@ int cc=0, ccr= 0, g=1;
   printf(" Qualidade(S%d)= %d\n\n",qs++,somat);
 
 return somat;
+}
+
+int trepa(pdad a, int pop, int res){
+	int current=0, next=0, i=0, j=0;
+
+		do{
+			for(i=0; i<pop; i++){
+				printf("Iteração %d\n", j++);
+				current = a[i].dist;
+					if(current > next){
+						next = current;
+					}
+					else{
+						printf("Melhor solução: %d\n", next);
+						return next;
+					}
+			}
+		}while(current > next);
+
+return next;
 }
 
 void ledados(pdad p,int ctd){
@@ -158,21 +173,34 @@ float rand_01()
 int startMenu(){
 	int i = 0;
 
-	puts("\t\t\t\t\t\t\t\t\t--------------- Menu ----------------\n");
-	puts("\t\t\t\t\t\t\t\t\tEscolha uma opcao");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa /'Trepa-colinas/'............1");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa /'Algoritmo genético/'.......2");
-	puts("\t\t\t\t\t\t\t\t\tTerminar............................3");
+	puts("-------------------- Menu ---------------------\n");
+	puts("\nEscolha uma opcao");
+	puts("Pesquisa 'Algoritmo genético' c/ 2 vizinhos...1");
+	puts("Pesquisa 'Algoritmo genético' c/ 1 vizinho....2");
+	puts("Pesquisa 'Trepa-colinas'......................3");
+	puts("Pesquisa 'Hibrida'............................4");
+	puts("Terminar......................................5");
 
 	do{
 		i = 0;
-		puts("\n\t\t\t\t\t\t\t\t\tEscolha uma opcaoo");
+		puts("\nEscolha uma opcaoo");
 		scanf("%d", &i);
 
-		if(i < 1 || i > 3){
-			puts("\n\t\t\t\t\t\t\t\t\t\t!!!Opcao invalida!!!");
+		if(i < 1 || i > 5){
+			puts("\n!!!Opcao invalida!!!");
 		}
-	}while(i < 1 || i > 3);
+	}while(i < 1 || i > 5);
 
 	return i;
+}
+
+void imprime_fileList(){
+	puts("\t\t\tLista de ficheiros existentes:\n");
+	puts("\t\t\tn010.txt");
+	puts("\t\t\tn012.txt");
+	puts("\t\t\tn030.txt");
+	puts("\t\t\tn060.txt");
+	puts("\t\t\tn120.txt");
+	puts("\t\t\tn240.txt\n");
+	puts("\t\t\tInsira o nome do ficheiro:");
 }
