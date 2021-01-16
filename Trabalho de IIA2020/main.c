@@ -50,8 +50,8 @@ int main(int argc, char **argv){
                       printf("Melhor solucao encontrada: %d\n\n",bestbest);
                  break;
               }
-            gera_sol_inicial(pd, cont, pop,sub);
-            mbf = genetico(pd, pop, sub,cont);
+            gera_sol_inicial(pd, cont, pop, sub);
+            mbf = genetico(pd, pop, sub, cont);
               if(mbf >= bestmbf){
                bestbest = bestmbf = mbf;
                 flag = 0;
@@ -103,7 +103,7 @@ int main(int argc, char **argv){
           printf("Ficheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
-            gera_sol_inicial(pd, cont, pop,sub);
+            gera_sol_inicial(pd, cont, pop, sub);
             mbf = genetico(pd, pop, sub, cont);
               if(mbf > bestmbf){
                 bestmbf = mbf;
@@ -140,7 +140,7 @@ int main(int argc, char **argv){
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop, sub);
-            mbf = trepa(pd, pop, res_trepa);
+            mbf = trepa(pd, pop, sub, res_trepa);
             }
           printf("Melhor solucao encontrada: %d\n\n", mbf);
           free(pd);
@@ -155,7 +155,7 @@ int main(int argc, char **argv){
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop, sub);
-            mbf = trepa(pd, pop, res_trepa);
+            mbf = trepa(pd, pop, cont, res_trepa);
             }
           printf("Melhor solucao encontrada: %d\n\n",mbf);
         }

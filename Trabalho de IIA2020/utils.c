@@ -12,8 +12,7 @@ void setQs(){
 qs = 1;
 }
 
-dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
-{
+dad* init_dados(char *nome, int *ele, int *grupo,int *ctd){
 	FILE *fi;
 	dad *p, *p1 = NULL;
 	int i=0,ct=0;
@@ -29,7 +28,7 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 	}
 	 p1 = malloc(sizeof(dad)*1);
 
-  fscanf(fi, "%d %d %[^\n]",ele,grupo, st);
+  fscanf(fi, "%d %d %[^\n]", ele, grupo, st);
 	printf(" Elementos: %d grupos: %d \n\n",*ele,*grupo);
 
 	while(fscanf(fi,"%d %d %d",&p1[ct].x,&p1[ct].y,&p1[ct].dist)==3){
@@ -49,7 +48,6 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 	fclose(fi);
 	return p1;
 }
-
 
 // Gera a solucao inicial
 // Parametros: solucao, numero de vertices
@@ -83,7 +81,7 @@ void escreve_sol(int *sol, int vert){
 	printf("\n");
 }
 
-int genetico(pdad a,int pop, int grupo, int ct){
+int genetico(pdad a, int pop, int grupo, int ct){
 
 int i,j=0,soma=0, somat=0;
 int cc=0, ccr= 0, g=1;
@@ -107,30 +105,24 @@ int cc=0, ccr= 0, g=1;
      }printf("\n");
      ccr = j;
      cc=0;
-
   }
   printf(" Qualidade(S%d)= %d\n\n",qs++,somat);
 
 return somat;
 }
 
-int trepa(pdad a, int pop, int res){
+int trepa(pdad a, int pop, int v_inicial, int res){
 	int current=0, next=0, i=0, j=0;
 
-		do{
 			for(i=0; i<pop; i++){
 				printf("Iteração %d\n", j++);
-				current = a[i].dist;
+				current = v_inicial;
+				printf("Dist: %d\n", current);
+				next = a[i].dist;
 					if(current > next){
 						next = current;
 					}
-					else{
-						printf("Melhor solução: %d\n", next);
-						return next;
-					}
 			}
-		}while(current > next);
-
 return next;
 }
 
