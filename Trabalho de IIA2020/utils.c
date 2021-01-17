@@ -5,9 +5,7 @@
 
 
 int qs = 1;
-// Leitura do ficheiro de input
-// Recebe: nome do ficheiro, numero de vertices (ptr), numero de iteracoes (ptr)
-// Devolve a matriz de adjacencias
+
 void setQs(){
 qs = 1;
 }
@@ -22,9 +20,9 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 	fi=fopen(nome, "r");
 	if(!fi)
 	{
-		puts("\n\n\t\t\t\t\t\t\t\t\t******************************************************\n");
-		printf("\t\t\t\t\t\t\t\t\t\t Erro no acesso ao ficheiro dos dados\n");
-		puts("\n\n\t\t\t\t\t\t\t\t\t******************************************************\n");
+		puts("\n\n\t\t\t\t\t******************************************************\n");
+		printf("\t\t\t\t\t\t Erro no acesso ao ficheiro dos dados\n");
+		puts("\n\n\t\t\t\t\t******************************************************\n");
 		exit(1);
 	}
 	 p1 = malloc(sizeof(dad)*1);
@@ -158,21 +156,22 @@ float rand_01()
 int startMenu(){
 	int i = 0;
 
-	puts("\t\t\t\t\t\t\t\t\t--------------- Menu ----------------\n");
-	puts("\t\t\t\t\t\t\t\t\tEscolha uma opcao");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa /'Trepa-colinas/'............1");
-	puts("\t\t\t\t\t\t\t\t\tPesquisa /'Algoritmo genético/'.......2");
-	puts("\t\t\t\t\t\t\t\t\tTerminar............................3");
+	puts("\t\t\t\t\t--------------------- Menu ------------------\n");
+	puts("\t\t\t\t\tEscolha uma opcao");
+	puts("\t\t\t\t\tPesquisa 'Trepa-colinas vizinhos'............1");
+	puts("\t\t\t\t\tPesquisa 'Trepa-colinas prob 50%'............2");
+	puts("\t\t\t\t\tPesquisa 'Algoritmo genetico'................3");
+	puts("\t\t\t\t\tTerminar.....................................4");
 
 	do{
 		i = 0;
-		puts("\n\t\t\t\t\t\t\t\t\tEscolha uma opcaoo");
+		puts("\n\t\t\t\t\tEscolha uma opcao");
 		scanf("%d", &i);
 
-		if(i < 1 || i > 3){
-			puts("\n\t\t\t\t\t\t\t\t\t\t!!!Opcao invalida!!!");
+		if(i < 1 || i > 4){
+			puts("\n\t\t\t\t\t!!!Opcao invalida!!!");
 		}
-	}while(i < 1 || i > 3);
+	}while(i < 1 || i > 4);
 
 	return i;
 }
