@@ -16,19 +16,11 @@ struct solucao
 };
 
 void ledados(pdad p,int ctd);
-
 int startMenu();
 void setQs();
 dad* init_dados(char *nome, int *pop, int *grupo,int *ctd);
 void gera_sol_inicial(pdad solu, int v,int grp,int subg);
-void substitui(int a[], int b[], int n);
-void gera_vizinho(int a[], int b[], int n);
-//void escreve_sol(int *sol, int vert);
-int fitness(pdad a, int *pop, int v_inicial);
 int genetico(pdad a,int ele, int grupo, int ct);
-int trepa(pdad a, int *pop, int v_inicial, int res);
-void imprime_fileList();
-//void substitui(int a[], int b[], int n);
 void init_rand();
 int random_l_h(int min, int max);
 float rand_01();

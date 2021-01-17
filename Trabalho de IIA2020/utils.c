@@ -5,14 +5,13 @@
 
 
 int qs = 1;
-// Leitura do ficheiro de input
-// Recebe: nome do ficheiro, numero de vertices (ptr), numero de iteracoes (ptr)
-// Devolve a matriz de adjacencias
+
 void setQs(){
 qs = 1;
 }
 
-dad* init_dados(char *nome, int *ele, int *grupo,int *ctd){
+dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
+{
 	FILE *fi;
 	dad *p, *p1 = NULL;
 	int i=0,ct=0;
@@ -21,14 +20,14 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd){
 	fi=fopen(nome, "r");
 	if(!fi)
 	{
-		puts("\n\n\t\t\t\t\t\t\t\t\t******************************************************\n");
-		printf("\t\t\t\t\t\t\t\t\t\t Erro no acesso ao ficheiro dos dados\n");
-		puts("\n\n\t\t\t\t\t\t\t\t\t******************************************************\n");
+		puts("\n\n\t\t\t\t\t******************************************************\n");
+		printf("\t\t\t\t\t\t Erro no acesso ao ficheiro dos dados\n");
+		puts("\n\n\t\t\t\t\t******************************************************\n");
 		exit(1);
 	}
 	 p1 = malloc(sizeof(dad)*1);
 
-  fscanf(fi, "%d %d %[^\n]", ele, grupo, st);
+    fscanf(fi, "%d %d %[^\n]",ele,grupo, st);
 	printf(" Elementos: %d grupos: %d \n\n",*ele,*grupo);
 
 	while(fscanf(fi,"%d %d %d",&p1[ct].x,&p1[ct].y,&p1[ct].dist)==3){
@@ -48,10 +47,10 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd){
 	fclose(fi);
 	return p1;
 }
-
 // Gera a solucao inicial
 // Parametros: solucao, numero de vertices
-void gera_sol_inicial(pdad solu, int v,int grp, int subg){
+void gera_sol_inicial(pdad solu, int v,int grp,int subg)
+{
 	int i, x;
 
 	for(i=0; i<v; i++)
@@ -65,38 +64,7 @@ void gera_sol_inicial(pdad solu, int v,int grp, int subg){
     }
 }
 
-// Escreve solucao
-// Parametros: solucao e numero de vertices
-/*void escreve_sol(int *sol, int vert){
-	int i;
-
-	printf("\nConjunto A: ");
-	for(i=0; i<vert; i++)
-		if(sol[i]==0)
-			printf("%2d  ", i);
-	printf("\nConjunto B: ");
-	for(i=0; i<vert; i++)
-		if(sol[i]==1)
-			printf("%2d  ", i);
-	printf("\n");
-}*/
-
-int fitness(pdad a, int *pop, int grupo){
-	int tot=0;
-	int i, j;
-		for(i=0; i<grupo; i++){
-			if(a[i].estado==0){
-				for(j=0; j<grupo; j++){
-					if(a[i].estado==1 && *(pop+i*grupo+j)==1){
-						tot++;
-					}
-				}
-			}
-		}
-	return tot;
-}
-
-int genetico(pdad a, int pop, int grupo, int ct){
+int genetico(pdad a,int pop, int grupo,int ct){
 
 int i,j=0,soma=0, somat=0;
 int cc=0, ccr= 0, g=1;
@@ -120,30 +88,11 @@ int cc=0, ccr= 0, g=1;
      }printf("\n");
      ccr = j;
      cc=0;
+
   }
   printf(" Qualidade(S%d)= %d\n\n",qs++,somat);
 
 return somat;
-}
-
-int trepa(pdad a, int *pop, int j, int res){
-	int dist, *next, i=0, vizinho;
-	next = malloc(sizeof(int));
-	if(next == NULL){
-		printf("Erro na alocação de memória\n");
-		exit(1);
-	}
-	dist = fitness(a, pop, j);
-	for(i=0; i<res; i++){
-		gera_vizinho(a, next, j);
-		dist = fitness(next, pop, j);
-			if(dist<=next){
-				substitui(a, next, j);
-				dist = dist;
-			}
-	}
-free(next);
-return next;
 }
 
 void ledados(pdad p,int ctd){
@@ -154,29 +103,6 @@ void ledados(pdad p,int ctd){
     printf("Estado %d dist (%d,%d) = %d\n",p[i].estado ,p[i].x, p[i].y, p[i].dist );
    }
 
-}
-
-void gera_vizinho(int a[], int b[], int n)
-{
-    int i, p1, p2;
-
-    for(i=0; i<n; i++)
-        b[i]=a[i];
-    do
-        p1=random_l_h(0, n-1);
-    while(b[p1] != 0);
-    do
-        p2=random_l_h(0, n-1);
-    while(b[p2] != 1);
-    b[p1] = 1;
-    b[p2] = 0;
-}
-
-// copia vector b para a (tamanho n)
-void substitui(int a[], int b[], int n){
-    int i;
-    for(i=0; i<n; i++)
-        a[i]=b[i];
 }
 
 // Inicializa o gerador de numeros aleatorios
@@ -200,34 +126,22 @@ float rand_01()
 int startMenu(){
 	int i = 0;
 
-	puts("-------------------- Menu ---------------------\n");
-	puts("\nEscolha uma opcao");
-	puts("Pesquisa 'Algoritmo genético' c/ 2 vizinhos...1");
-	puts("Pesquisa 'Algoritmo genético' c/ 1 vizinho....2");
-	puts("Pesquisa 'Trepa-colinas'......................3");
-	puts("Pesquisa 'Hibrida'............................4");
-	puts("Terminar......................................5");
+	puts("\t\t\t\t\t--------------------- Menu ------------------\n");
+	puts("\t\t\t\t\tEscolha uma opcao");
+	puts("\t\t\t\t\tPesquisa 'Trepa-colinas vizinhos'............1");
+	puts("\t\t\t\t\tPesquisa 'Trepa-colinas prob 50%'............2");
+	puts("\t\t\t\t\tPesquisa 'Algoritmo genetico'................3");
+	puts("\t\t\t\t\tTerminar.....................................4");
 
 	do{
 		i = 0;
-		puts("\nEscolha uma opcaoo");
+		puts("\n\t\t\t\t\tEscolha uma opcao");
 		scanf("%d", &i);
 
-		if(i < 1 || i > 5){
-			puts("\n!!!Opcao invalida!!!");
+		if(i < 1 || i > 4){
+			puts("\n\t\t\t\t\t!!!Opcao invalida!!!");
 		}
-	}while(i < 1 || i > 5);
+	}while(i < 1 || i > 4);
 
 	return i;
-}
-
-void imprime_fileList(){
-	puts("\t\t\tLista de ficheiros existentes:\n");
-	puts("\t\t\tn010.txt");
-	puts("\t\t\tn012.txt");
-	puts("\t\t\tn030.txt");
-	puts("\t\t\tn060.txt");
-	puts("\t\t\tn120.txt");
-	puts("\t\t\tn240.txt\n");
-	puts("\t\t\tInsira o nome do ficheiro:");
 }
