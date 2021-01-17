@@ -17,7 +17,7 @@ int main(int argc, char **argv){
     int flag = 0, tryes = 0, escolha = 0;
     char nome_fich[15];
 
-    system("clear");
+    system("cls");
 
     if(argc == 3){
       tryes = atoi(argv[2]);
@@ -40,7 +40,7 @@ int main(int argc, char **argv){
       switch (menu) {
 
 case 1://TREPA COLINAS COM 2 VIZINHOS
-      system("clear");
+      system("cls");
         if(escolha == 0){
 
         printf("Ficheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
@@ -79,7 +79,7 @@ case 1://TREPA COLINAS COM 2 VIZINHOS
         if(tryes == 0){
           tryes = 100;
           }
-      system("clear");
+      system("cls");
       printf("\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
       printf("\t\t\t\tEscolha a quantidade de vizinhos a aceitar com pior qualidade: ");
       scanf("%d",&viz);
@@ -111,7 +111,7 @@ case 1://TREPA COLINAS COM 2 VIZINHOS
       break;
 
 case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
-      system("clear");
+      system("cls");
         if(escolha == 0){
           printf("Ficheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -148,7 +148,7 @@ case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
           if(tryes == 0){
             tryes = 100;
           }
-      system("clear");
+      system("cls");
       printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
 
       pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -186,7 +186,7 @@ case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
           break;
 
 case 3: //encontra a melhor solucao entre um numero de interacoes
-        system("clear");
+        system("cls");
         if(escolha == 0){
           printf("Ficheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -213,7 +213,7 @@ case 3: //encontra a melhor solucao entre um numero de interacoes
           if(tryes == 0){
             tryes = 100;
           }
-          system("clear");
+          system("cls");
           printf("Ficheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
@@ -235,7 +235,7 @@ case 3: //encontra a melhor solucao entre um numero de interacoes
 
 case 4: //Pesquisa hibrida
 
-system("clear");
+system("cls");
         if(escolha == 0){
           printf("Ficheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -276,7 +276,7 @@ system("clear");
           if(tryes == 0){
             tryes = 100;
           }
-      system("clear");
+      system("cls");
       printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
 
       pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -310,7 +310,7 @@ system("clear");
           escolha = 1;
 ////////////////////////////////////////////////////////
 
-       system("clear");
+       system("cls");
         if(escolha == 0){
           printf("Ficheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -325,7 +325,7 @@ system("clear");
           free(pd);
           mbf = 0;;
         }else{
-          system("clear");
+          system("cls");
           printf("Ficheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
@@ -352,7 +352,7 @@ system("clear");
           break;
 
 case 5:
-        system("clear");
+        system("cls");
         puts("\n\n******************************************************\n");
         printf("\n\t\t  Programa terminado!\n\n");
         puts("\n******************************************************");
