@@ -12,7 +12,7 @@ int main(int argc, char **argv){
     init_rand();
     //psol ps = NULL;
     pdad pd = NULL;
-    int mbf=0,bestmbf=0,bestbest = 0;///////////////////
+    int mbf=0,bestmbf=0,bestbest = 0;
     int i, ale, pop, sub, viz, cont, menu, tryes=0, escolha=0;
     int flag=0;
     char nome_fich[15];
@@ -43,7 +43,7 @@ case 1://TREPA COLINAS COM 2 VIZINHOS
          system("cls");
          if(escolha == 0){
 
-          printf("\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           printf("\t\t\t\tEscolha a quantidade de vizinhos a aceitar com pior qualidade: ");
           scanf("%d",&viz);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -77,10 +77,14 @@ case 1://TREPA COLINAS COM 2 VIZINHOS
           puts("\t\t\t\t\tInsira o nome do ficheiro:");
           scanf("%20s", nome_fich);
           printf("\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
-          puts("\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\tNúmero de iterações desejadas: \n");
+          puts("\t\t\t\t\t(100 iteracoes por defeito)\n\t\t\t\t\tNumero de iteracoes desejadas? : \n");
+          printf("\t\t\t\t\tDigite '0' para default: \n");
           scanf("%d", &tryes);
+          if(tryes == 0){
+            tryes = 100;
+          }
           system("cls");
-           printf("\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+           printf("\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           printf("\t\t\t\tEscolha a quantidade de vizinhos a aceitar com pior qualidade: ");
           scanf("%d",&viz);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
@@ -111,7 +115,7 @@ case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
         system("cls");
         if(escolha == 0){
 
-          printf("\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
                   if(flag == 3){
@@ -145,10 +149,14 @@ case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
           puts("\t\t\tInsira o nome do ficheiro:");
           scanf("%20s", nome_fich);
           printf("\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
-          puts("\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\tNúmero de iterações desejadas: \n");
+          puts("\t\t\t\t\t(100 iteracoes por defeito)\n\t\t\t\t\tNumero de iteracoes desejadas? : \n");
+          printf("\t\t\t\t\tDigite '0' para default: \n");
           scanf("%d", &tryes);
+          if(tryes == 0){
+            tryes = 100;
+          }
           system("cls");
-          printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
 
            pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
@@ -183,7 +191,7 @@ case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
 case 3: //encontra a melhor solucao entre um numero de interacoes
         system("cls");
         if(escolha == 0){
-          printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop,sub);
@@ -207,8 +215,12 @@ case 3: //encontra a melhor solucao entre um numero de interacoes
           puts("\t\t\t\t\tInsira o nome do ficheiro:");
           scanf("%20s", nome_fich);
           printf("\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
-          puts("\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\tNumero de iteracoes desejadas: \n");
+          puts("\t\t\t\t\t(100 iteracoes por defeito)\n\t\t\t\t\tNumero de iteracoes desejadas? : \n");
+          printf("\t\t\t\t\tDigite '0' para default: \n");
           scanf("%d", &tryes);
+          if(tryes == 0){
+            tryes = 100;
+          }
           system("cls");
           printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);

@@ -47,8 +47,6 @@ dad* init_dados(char *nome, int *ele, int *grupo,int *ctd)
 	fclose(fi);
 	return p1;
 }
-
-
 // Gera a solucao inicial
 // Parametros: solucao, numero de vertices
 void gera_sol_inicial(pdad solu, int v,int grp,int subg)
@@ -64,26 +62,6 @@ void gera_sol_inicial(pdad solu, int v,int grp,int subg)
         while(solu[x].estado != 0);
         solu[x].estado=1;
     }
-
-
-}
-
-
-// Escreve solucao
-// Parametros: solucao e numero de vertices
-void escreve_sol(int *sol, int vert)
-{
-	int i;
-
-	printf("\nConjunto A: ");
-	for(i=0; i<vert; i++)
-		if(sol[i]==0)
-			printf("%2d  ", i);
-	printf("\nConjunto B: ");
-	for(i=0; i<vert; i++)
-		if(sol[i]==1)
-			printf("%2d  ", i);
-	printf("\n");
 }
 
 int genetico(pdad a,int pop, int grupo,int ct){
@@ -125,14 +103,6 @@ void ledados(pdad p,int ctd){
     printf("Estado %d dist (%d,%d) = %d\n",p[i].estado ,p[i].x, p[i].y, p[i].dist );
    }
 
-}
-
-// copia vector b para a (tamanho n)
-void substitui(int a[], int b[], int n)
-{
-    int i;
-    for(i=0; i<n; i++)
-        a[i]=b[i];
 }
 
 // Inicializa o gerador de numeros aleatorios
