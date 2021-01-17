@@ -148,7 +148,7 @@ int main(int argc, char **argv){
           printf("Ficheiro seleccionado: %s.\n\n", nome_fich);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
             gera_sol_inicial(pd, cont, pop, sub);
-            mbf = trepa(pd, pop, cont, res_trepa);
+            mbf = trepa(pd, &pop, cont, res_trepa);
           printf("Melhor solucao encontrada: %d\n\n",mbf);
           free(pd);
         }

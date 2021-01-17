@@ -67,7 +67,7 @@ void gera_sol_inicial(pdad solu, int v,int grp, int subg){
 
 // Escreve solucao
 // Parametros: solucao e numero de vertices
-void escreve_sol(int *sol, int vert){
+/*void escreve_sol(int *sol, int vert){
 	int i;
 
 	printf("\nConjunto A: ");
@@ -79,6 +79,21 @@ void escreve_sol(int *sol, int vert){
 		if(sol[i]==1)
 			printf("%2d  ", i);
 	printf("\n");
+}*/
+
+int fitness(pdad a, int *pop, int grupo){
+	int tot=0;
+	int i, j;
+		for(i=0; i<grupo; i++){
+			if(a[i].estado==0){
+				for(j=0; j<grupo; j++){
+					if(a[i].estado==1 && *(pop+i*grupo+j)==1){
+						tot++;
+					}
+				}
+			}
+		}
+	return tot;
 }
 
 int genetico(pdad a, int pop, int grupo, int ct){
@@ -111,21 +126,25 @@ int cc=0, ccr= 0, g=1;
 return somat;
 }
 
-int trepa(pdad a, int pop, int j, int res){
-	int current, next, i=0;
-
-			current = a[j].dist;
-
-			for(i=0; i<pop; i++){
-				printf("Dist: %d\n", current);
-				next = a[i].dist;
-				printf("New dist: %d\n", next);
-					if(current < next){
-						return next;
-				}
+int trepa(pdad a, int *pop, int j, int res){
+	int dist, *next, i=0, vizinho;
+	next = malloc(sizeof(int));
+	if(next == NULL){
+		printf("Erro na alocação de memória\n");
+		exit(1);
+	}
+	dist = fitness(a, pop, j);
+	for(i=0; i<res; i++){
+		gera_vizinho(a, next, j);
+		dist = fitness(next, pop, j);
+			if(dist<=next){
+				substitui(a, next, j);
+				dist = dist;
 			}
-		return next;
-		}
+	}
+free(next);
+return next;
+}
 
 void ledados(pdad p,int ctd){
 
@@ -137,9 +156,24 @@ void ledados(pdad p,int ctd){
 
 }
 
-// copia vector b para a (tamanho n)
-void substitui(int a[], int b[], int n)
+void gera_vizinho(int a[], int b[], int n)
 {
+    int i, p1, p2;
+
+    for(i=0; i<n; i++)
+        b[i]=a[i];
+    do
+        p1=random_l_h(0, n-1);
+    while(b[p1] != 0);
+    do
+        p2=random_l_h(0, n-1);
+    while(b[p2] != 1);
+    b[p1] = 1;
+    b[p2] = 0;
+}
+
+// copia vector b para a (tamanho n)
+void substitui(int a[], int b[], int n){
     int i;
     for(i=0; i<n; i++)
         a[i]=b[i];
