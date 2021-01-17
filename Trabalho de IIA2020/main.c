@@ -241,18 +241,19 @@ system("clear");
           printf("\tMelhor solucao encontrada: %d",bestbest);
           puts("\n\n******************************************************\n");
       }
+    }
   gera_sol_inicial(pd, cont, pop,sub);
   mbf = genetico(pd, pop, sub,cont);
     if(mbf <= bestmbf){
       bestbest = bestmbf = mbf;
       flag = 0;
-      }else if(mbf < bestmbf && flag < 3)
+      }else if(mbf < bestmbf)
       ale = random_l_h(0,1);
         if(ale == 1){
         bestmbf = mbf;
         flag += 1;
       }
-    }
+
   flag = 0;
   setQs();
   }else{
@@ -289,7 +290,6 @@ do{
     printf("\tMelhor solucao encontrada: %d", mbf_aux);
     puts("\n\n******************************************************\n");
     }
-    free(pd);
     flag = 0;
     mbf = 0;
     mbf_aux = 0;
