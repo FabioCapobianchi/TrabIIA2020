@@ -13,7 +13,7 @@ int main(int argc, char **argv){
     //psol ps = NULL;
     pdad pd = NULL;
     int mbf=0,bestmbf=0,bestbest = 0;///////////////////
-    int i, ale, pop, sub, cont, menu, tryes=0, escolha=0;
+    int i, ale, pop, sub, viz, cont, menu, tryes=0, escolha=0;
     int flag=0;
     char nome_fich[15];
 
@@ -39,15 +39,17 @@ int main(int argc, char **argv){
       menu = startMenu();
       switch (menu) {
 
-        case 1:
+case 1://TREPA COLINAS COM 2 VIZINHOS
          system("cls");
          if(escolha == 0){
 
           printf("\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\tEscolha a quantidade de vizinhos a aceitar com pior qualidade: ");
+          scanf("%d",&viz);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
-                  if(flag == 3){
-                      printf(" \t\t\t\tMelhor solucao encontrada: %d\n\n",bestbest);
+                  if(flag == viz+1){
+                      printf(" \t\t\t\tMelhor solucao encontrada com vizinhanca '%d': %d\n\n",viz,bestbest);
                  break;
               }
             gera_sol_inicial(pd, cont, pop,sub);
@@ -55,7 +57,7 @@ int main(int argc, char **argv){
               if(mbf >= bestmbf){
                bestbest = bestmbf = mbf;
                 flag = 0;
-              }else if(mbf < bestmbf && flag < 3)
+              }else if(mbf < bestmbf && flag < viz+1)
                 bestmbf = mbf;
               flag += 1;
             }
@@ -78,24 +80,26 @@ int main(int argc, char **argv){
           puts("\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\tNúmero de iterações desejadas: \n");
           scanf("%d", &tryes);
           system("cls");
-          printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
-
-           pd = init_dados(nome_fich, &pop, &sub, &cont);
+           printf("\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\tEscolha a quantidade de vizinhos a aceitar com pior qualidade: ");
+          scanf("%d",&viz);
+          pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
-                  if(flag == 3){
-                      printf(" \t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestbest);
+                  if(flag == viz+1){
+                      printf(" \t\t\t\tMelhor solucao encontrada com vizinhanca '%d': %d\n\n",viz,bestbest);
                  break;
               }
             gera_sol_inicial(pd, cont, pop,sub);
             mbf = genetico(pd, pop, sub,cont);
               if(mbf >= bestmbf){
-          bestbest = bestmbf = mbf;
+               bestbest = bestmbf = mbf;
                 flag = 0;
-              }else if(mbf < bestmbf && flag < 3)
-              bestmbf = mbf;
+              }else if(mbf < bestmbf && flag < viz+1)
+                bestmbf = mbf;
               flag += 1;
             }
-          flag = 0;
+            flag = 0;
+
           setQs();
           free(pd);
           mbf = 0;
@@ -103,7 +107,7 @@ int main(int argc, char **argv){
           escolha = 1;
           break;
 
-        case 2:
+case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
         system("cls");
         if(escolha == 0){
 
@@ -126,8 +130,7 @@ int main(int argc, char **argv){
                 flag += 1;
               }
             }
-            flag = 0;
-
+          flag = 0;
           setQs();
           free(pd);
           mbf = 0;
@@ -177,7 +180,7 @@ int main(int argc, char **argv){
 
           break;
 
-        case 3:
+case 3: //encontra a melhor solucao entre um numero de interacoes
         system("cls");
         if(escolha == 0){
           printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
@@ -192,6 +195,7 @@ int main(int argc, char **argv){
           printf(" \t\t\t\t\t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestmbf);
           setQs();
           free(pd);
+          mbf = 0;;
         }else{
           puts("\t\t\t\t\tLista de ficheiros existentes:\n");
           puts("\t\t\t\t\tn010.txt");
@@ -203,10 +207,10 @@ int main(int argc, char **argv){
           puts("\t\t\t\t\tInsira o nome do ficheiro:");
           scanf("%20s", nome_fich);
           printf("\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
-          puts("\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\tNúmero de iterações desejadas: \n");
+          puts("\t\t\t\t\t(100 iterações por defeito)\n\t\t\t\t\tNumero de iteracoes desejadas: \n");
           scanf("%d", &tryes);
           system("cls");
-          printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iterações.\n\n", nome_fich, tryes);
+          printf("\t\t\t\t\tFicheiro seleccionado: %s, com %d iteracoes.\n\n", nome_fich, tryes);
           pd = init_dados(nome_fich, &pop, &sub, &cont);
           for(i=0;i<tryes;i++){
             gera_sol_inicial(pd, cont, pop,sub);
@@ -216,6 +220,9 @@ int main(int argc, char **argv){
               }
             }
           printf(" \t\t\t\t\tMelhor solucao encontrada: %d\n\n",bestmbf);
+          setQs();
+          free(pd);
+          mbf = 0;
         }
           escolha = 1;
           break;
