@@ -74,7 +74,7 @@ case 1://TREPA COLINAS COM 2 VIZINHOS
           puts("\t\t\t\t\tn060.txt");
           puts("\t\t\t\t\tn120.txt");
           puts("\t\t\t\t\tn240.txt\n");
-          puts("\t\t\t\t\tInsira o nome do ficheiro:");
+          puts("\t\t\t\t\tInsira o nome do ficheiro:");//
           scanf("%20s", nome_fich);
           printf("\t\t\t\t\tFicheiro seleccionado: %s\n", nome_fich);
           puts("\t\t\t\t\t(100 iteracoes por defeito)\n\t\t\t\t\tNumero de iteracoes desejadas? : \n");
