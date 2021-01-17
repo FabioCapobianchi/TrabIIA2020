@@ -127,8 +127,8 @@ case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
               if(mbf >= bestmbf){
                bestbest = bestmbf = mbf;
                 flag = 0;
-                ale = random_l_h(0,1);
               }else if(mbf < bestmbf && flag < 3)
+              ale = random_l_h(0,1);
               if(ale == 1){
                 bestmbf = mbf;
                 flag += 1;
@@ -169,8 +169,8 @@ case 2: //TREPA COLINAS PROB 50% DE ACEITAR SOLUÇÃO PIOR
               if(mbf >= bestmbf){
           bestbest = bestmbf = mbf;
                 flag = 0;
-                ale = random_l_h(0,1);
               }else if(mbf < bestmbf && flag < 3)
+               ale = random_l_h(0,1);
               if(ale == 1){
                 bestmbf = mbf;
                 flag += 1;
