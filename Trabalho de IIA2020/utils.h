@@ -22,6 +22,7 @@ dad* init_dados(char *nome, int *pop, int *grupo,int *ctd);
 void gera_sol_inicial(pdad solu, int v,int grp,int subg);
 int genetico(pdad a,int ele, int grupo, int ct);
 void init_rand();
+void imprimeFileList();
 int random_l_h(int min, int max);
 float rand_01();
 

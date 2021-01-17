@@ -126,22 +126,34 @@ float rand_01()
 int startMenu(){
 	int i = 0;
 
-	puts("\t\t\t\t\t--------------------- Menu ------------------\n");
-	puts("\t\t\t\t\tEscolha uma opcao");
-	puts("\t\t\t\t\tPesquisa 'Trepa-colinas vizinhos'............1");
-	puts("\t\t\t\t\tPesquisa 'Trepa-colinas prob 50%'............2");
-	puts("\t\t\t\t\tPesquisa 'Algoritmo genetico'................3");
-	puts("\t\t\t\t\tTerminar.....................................4");
+	printf("--------------------- Menu ------------------\n"
+			"Escolha uma opcao:\n"
+			"Pesquisa 'Trepa-colinas vizinhos'............1\n"
+			"Pesquisa 'Trepa-colinas prob 50%%'...........2\n"
+			"Pesquisa 'Algoritmo genetico'................3\n"
+			"Pesquisa 'Hibrida'...........................4\n"
+			"Terminar.....................................5\n");
 
 	do{
 		i = 0;
 		puts("\n\t\t\t\t\tEscolha uma opcao");
 		scanf("%d", &i);
 
-		if(i < 1 || i > 4){
+		if(i < 1 || i > 5){
 			puts("\n\t\t\t\t\t!!!Opcao invalida!!!");
 		}
-	}while(i < 1 || i > 4);
+	}while(i < 1 || i > 5);
 
 	return i;
+}
+
+void imprimeFileList(){
+	puts("Lista de ficheiros existentes:\n");
+	puts("n010.txt");
+	puts("n012.txt");
+	puts("n030.txt");
+	puts("n060.txt");
+	puts("n120.txt");
+	puts("n240.txt\n");
+	printf("Insira o nome do ficheiro: ");
 }
